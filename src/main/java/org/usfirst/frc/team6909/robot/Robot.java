@@ -30,9 +30,9 @@ public class Robot extends IterativeRobot {
 			if (left > 0.2 || left < -0.2) {
 				// モーターの速度を設定
 				if (left > 0.2) {
-					m_leftArm.set(100);
+					m_leftArm.set(left);
 				} else {
-					m_leftArm.set(-100);
+					m_leftArm.set(-left);
 				}
 			} else {
 				// モーターの速度を設定
@@ -41,14 +41,45 @@ public class Robot extends IterativeRobot {
 			if (right > 0.2 || right < -0.2) {
 				// モーターの速度を設定
 				if (right > 0.2) {
-					m_rightArm.set(100);
+					m_rightArm.set(right);
 				} else {
-					m_rightArm.set(-100);
+					m_rightArm.set(-right);
 				}
 			} else {
 				// モーターの速度を設定
 				m_rightArm.set(0);
 			}
 		}
+		double left_trigger = driver.getTriggerAxis(Hand.kLeft);
+		double right_trigger = driver.getTriggerAxis(Hand.kRight);
+		if (left_trigger < 0.2 || left_trigger > -0.2 && right_trigger < 0.2 || right_trigger > -0.2) {
+			// モーターの速度を設定
+			m_leftArm.set(0);
+			m_rightArm.set(0);
+		} else {
+			if (left_trigger > 0.2 || left_trigger < -0.2) {
+				// モーターの速度を設定
+				if (left_trigger > 0.2) {
+					m_leftArm.set(1);
+				} else {
+					m_leftArm.set(0);
+				}
+			} else {
+				// モーターの速度を設定
+				m_leftArm.set(0);
+			}
+			if (right_trigger > 0.2 || right_trigger < -0.2) {
+				// モーターの速度を設定
+				if (right_trigger > 0.2) {
+					m_rightArm.set(1);
+				} else {
+					m_rightArm.set(0);
+				}
+			} else {
+				// モーターの速度を設定
+				m_rightArm.set(0);
+			}
+		}
+
 	}
 }
