@@ -29,14 +29,22 @@ public class Robot extends IterativeRobot {
 		} else {
 			if (left > 0.2 || left < -0.2) {
 				// モーターの速度を設定
-				m_leftArm.set(100);
+				if (left > 0.2) {
+					m_leftArm.set(100);
+				} else {
+					m_leftArm.set(-100);
+				}
 			} else {
 				// モーターの速度を設定
 				m_leftArm.set(0);
 			}
 			if (right > 0.2 || right < -0.2) {
 				// モーターの速度を設定
-				m_rightArm.set(100);
+				if (right > 0.2) {
+					m_rightArm.set(100);
+				} else {
+					m_rightArm.set(-100);
+				}
 			} else {
 				// モーターの速度を設定
 				m_rightArm.set(0);
