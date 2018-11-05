@@ -50,6 +50,7 @@ public class Robot extends IterativeRobot {
 				m_rightArm.set(0);
 			}
 		}
+		// トリガーの値を取得
 		double left_trigger = driver.getTriggerAxis(Hand.kLeft);
 		double right_trigger = driver.getTriggerAxis(Hand.kRight);
 		if (left_trigger < 0.2 || left_trigger > -0.2 && right_trigger < 0.2 || right_trigger > -0.2) {
